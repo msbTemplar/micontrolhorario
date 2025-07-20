@@ -38,6 +38,8 @@ s at '/home/controlhorario/mysite/manage.py'
 
 controlhorario.pythonanywhere.com
 
+https://controlhorario.pythonanywhere.com/dashboard/
+
 
 
 

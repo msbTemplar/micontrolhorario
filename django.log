@@ -4883,3 +4883,9 @@ WARNING 2025-07-20 11:13:50,994 log 24188 15752 Not Found: /favicon.ico
 INFO 2025-07-20 11:13:50,996 basehttp 24188 15752 - Broken pipe from ('127.0.0.1', 64762)
 INFO 2025-07-20 11:14:51,260 autoreload 24188 23180 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\urls.py changed, reloading.
 INFO 2025-07-20 11:14:52,930 autoreload 21720 1880 Watching for file changes with StatReloader
+INFO 2025-07-20 11:14:55,615 basehttp 21720 24420 "GET / HTTP/1.1" 200 4445
+INFO 2025-07-20 11:15:09,720 basehttp 21720 24420 "POST / HTTP/1.1" 302 0
+INFO 2025-07-20 11:15:09,866 basehttp 21720 24420 "GET /dashboard/ HTTP/1.1" 200 16265
+INFO 2025-07-20 11:15:11,220 basehttp 21720 24420 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-07-20 11:15:11,228 basehttp 21720 24420 "GET /login/ HTTP/1.1" 200 3077
+INFO 2025-07-20 13:24:25,546 autoreload 21640 26248 Watching for file changes with StatReloader

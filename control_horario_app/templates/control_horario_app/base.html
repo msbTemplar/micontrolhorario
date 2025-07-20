@@ -76,6 +76,63 @@
         {% block content %}
         {% endblock %}
     </div>
+
+    {% if not request.COOKIES.cookie_consent %}
+<div id="cookie-banner" class="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background: #333; color: white; text-align: center; padding: 20px; z-index: 1000;">
+    <p>
+        Este sitio web utiliza cookies para personalizar contenido, analizar el tráfico y ofrecer funciones sociales. 
+        Lea más en nuestra <a href="{% url 'privacy_policy' %}" style="color: #4CAF50; text-decoration: underline;">Política de Privacidad</a>.
+    </p>
+    <div style="margin-top: 10px;">
+        <button id="accept-all-cookies" style="background: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; margin-right: 10px;">
+            Aceptar todas
+        </button>
+        <button id="reject-all-cookies" style="background: #f44336; color: white; padding: 10px 20px; border: none; cursor: pointer; margin-right: 10px;">
+            Rechazar todas
+        </button>
+        <button id="configure-cookies" style="background: #2196F3; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+            Configurar cookies
+        </button>
+    </div>
+</div>
+{% endif %}
+    
+     <div id="cookie-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2000; align-items: center; justify-content: center;">
+    <div style="position: relative; width: 90%; max-width: 500px; background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+        <h3 style="margin: 0 0 15px; font-size: 1.5rem; color: #333; text-align: center;">Configurar Cookies</h3>
+        <p style="font-size: 1rem; color: #555; text-align: center; margin-bottom: 20px;">
+            Selecciona las categorías de cookies que deseas habilitar:
+        </p>
+        <form id="cookie-settings-form" style="display: flex; flex-direction: column; gap: 15px;">
+            <label style="display: flex; align-items: center; gap: 10px; font-size: 1rem; color: #333;">
+                <input type="checkbox" name="essential" checked disabled>
+                <span>Cookies esenciales (siempre habilitadas)</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; font-size: 1rem; color: #333;">
+                <input type="checkbox" name="analytics">
+                <span>Cookies analíticas</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; font-size: 1rem; color: #333;">
+                <input type="checkbox" name="marketing">
+                <span>Cookies de marketing</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; font-size: 1rem; color: #333;">
+                <input type="checkbox" name="preferences">
+                <span>Cookies de preferencias</span>
+            </label>
+            <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                <button type="button" id="save-cookie-settings" style="background: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+                    Guardar configuración
+                </button>
+                <button type="button" id="close-cookie-modal" style="background: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+                    Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+    
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -99,5 +156,113 @@
                 {% endif %}
             });
         </script>
+
+        <script>
+        document.getElementById('accept-all-cookies').addEventListener('click', function() {
+            setCookie('cookie_consent', 'all', 365);
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+    
+        document.getElementById('reject-all-cookies').addEventListener('click', function() {
+            setCookie('cookie_consent', 'none', 365);
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+    
+        document.getElementById('configure-cookies').addEventListener('click', function() {
+            //alert('Aquí podrías mostrar un modal o redirigir a una página para configurar cookies por categorías.');
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, Configure cookies!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Aquí se muestra el segundo SweetAlert para informar sobre la eliminación
+                    Swal.fire({
+                        title: "Cookies Configurations!",
+                        text: "Your are going to configurate your cookies .",
+                        icon: "success",
+                    }).then((isConfirmed) => {
+                        // Verificar si el usuario ha confirmado el segundo SweetAlert
+                        if (isConfirmed) {
+                            console.log("el id es : " + 0);
+                            // Aquí redireccionamos al usuario para eliminar el registro
+                            //window.location.href = `/eliminar_dentists_image/${id}`; // Asegúrate de que esta URL sea correcta
+                            document.getElementById('cookie-modal').style.display = 'block';
+                        } else {
+                            Swal.fire("Cancelled", "Your cookies configurations has not been set yet :)", "error");
+                        }
+                    });
+                }
+            });
+            //document.getElementById('cookie-modal').style.display = 'block';
+        });
+
+        document.getElementById('close-cookie-modal').addEventListener('click', function() {
+            document.getElementById('cookie-modal').style.display = 'none';
+        });
+    
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        document.getElementById('save-cookie-settings').addEventListener('click', function() {
+            const form = document.getElementById('cookie-settings-form');
+            const settings = {
+                analytics: form.elements['analytics'].checked,
+                marketing: form.elements['marketing'].checked,
+                preferences: form.elements['preferences'].checked,
+            };
+            setCookie('cookie_consent_settings', JSON.stringify(settings), 365);
+        
+            // Cierra el modal
+            document.getElementById('cookie-modal').style.display = 'none';
+
+            // Oculta el banner
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+        
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+        
+        const cookieSettings = JSON.parse(getCookie('cookie_consent_settings') || '{}');
+        
+        if (cookieSettings.analytics) {
+            console.log('Activando cookies analíticas...');
+            // Aquí puedes cargar tus scripts de Google Analytics, por ejemplo.
+        }
+        
+        if (cookieSettings.marketing) {
+            console.log('Activando cookies de marketing...');
+            // Aquí puedes cargar scripts relacionados con anuncios.
+        }
+        
+        if (cookieSettings.preferences) {
+            console.log('Activando cookies de preferencias...');
+            // Aquí puedes activar cookies personalizadas para el usuario.
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const consentSettings = getCookie('cookie_consent_settings');
+            if (consentSettings) {
+                // Si ya existen configuraciones de cookies, oculta el banner
+                document.getElementById('cookie-banner').style.display = 'none';
+            }
+        });
+        
+        
+    </script>
+
 </body>
 </html>
