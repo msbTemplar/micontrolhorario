@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Revisar Solicitud #{{ modification_request_obj.id }}{% endblock %} {# CAMBIO AQUI #}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Revisar Solicitud de Modificación #{{ modification_request_obj.id }}</h1> {# CAMBIO AQUI #}
+
+    {% if error_message %}
+        <div class="alert alert-danger">{{ error_message }}</div>
+    {% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Detalles de la Solicitud de {{ modification_request_obj.requesting_user.username }}</h4> {# CAMBIO AQUI #}
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>**Registro Original:**</h5>
+                    <p><strong>Inicio:</strong> {{ modification_request_obj.original_entry.start_time|date:"d M Y H:i:s" }}</p> {# CAMBIO AQUI #}
+                    <p><strong>Fin:</strong> {{ modification_request_obj.original_entry.end_time|default:"N/A"|date:"d M Y H:i:s" }}</p> {# CAMBIO AQUI #}
+                    <p><strong>Descanso:</strong> 
+                        {% if modification_request_obj.original_entry.break_start and modification_request_obj.original_entry.break_end %} {# CAMBIO AQUI #}
+                            {{ modification_request_obj.original_entry.break_start|date:"H:i" }} - {{ modification_request_obj.original_entry.break_end|date:"H:i" }} {# CAMBIO AQUI #}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h5>**Cambios Solicitados:**</h5>
+                    <p><strong>Inicio:</strong> {{ modification_request_obj.requested_start_time|date:"d M Y H:i:s" }}</p> {# CAMBIO AQUI #}
+                    <p><strong>Fin:</strong> {{ modification_request_obj.requested_end_time|default:"N/A"|date:"d M Y H:i:s" }}</p> {# CAMBIO AQUI #}
+                    <p><strong>Descanso:</strong> 
+                        {% if modification_request_obj.requested_break_start and modification_request_obj.requested_break_end %} {# CAMBIO AQUI #}
+                            {{ modification_request_obj.requested_break_start|date:"H:i" }} - {{ modification_request_obj.requested_break_end|date:"H:i" }} {# CAMBIO AQUI #}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <p><strong>Razón del Solicitante:</strong> {{ modification_request_obj.reason|default:"N/A" }}</p> {# CAMBIO AQUI #}
+            <p><strong>Estado Actual:</strong> <span class="badge
+                {% if modification_request_obj.status == 'pending' %}bg-warning text-dark{% elif modification_request_obj.status == 'approved' %}bg-success{% else %}bg-danger{% endif %}"> {# CAMBIO AQUI #}
+                {{ modification_request_obj.get_status_display }} {# CAMBIO AQUI #}
+            </span></p>
+            <p><strong>Fecha Solicitud:</strong> {{ modification_request_obj.requested_at|date:"d M Y H:i:s" }}</p> {# CAMBIO AQUI #}
+            {% if modification_request_obj.reviewer %} {# CAMBIO AQUI #}
+                <p><strong>Revisado por:</strong> {{ modification_request_obj.reviewer.username }} el {{ modification_request_obj.reviewed_at|date:"d M Y H:i:s" }}</p> {# CAMBIO AQUI #}
+                <p><strong>Notas del Admin:</strong> {{ modification_request_obj.admin_notes|default:"N/A" }}</p> {# CAMBIO AQUI #}
+            {% endif %}
+        </div>
+    </div>
+
+    {% if modification_request_obj.status == 'pending' %} {# CAMBIO AQUI #}
+    <div class="card">
+        <div class="card-header">
+            <h4>Acciones del Administrador</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" action="{% url 'review_modification_request_detail' modification_request_obj.id %}"> {# CAMBIO AQUI #}
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="admin_notes" class="form-label">Notas del Administrador (opcional para aprobación, requerido para rechazo):</label>
+                    <textarea class="form-control" id="admin_notes" name="admin_notes" rows="3"></textarea>
+                </div>
+                <button type="submit" name="action" value="approve" class="btn btn-success me-2">Aprobar</button>
+                <button type="submit" name="action" value="reject" class="btn btn-danger">Rechazar</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    <p class="mt-4"><a href="{% url 'admin_modification_requests' %}" class="btn btn-secondary">Volver a la lista de solicitudes</a></p>
+</div>
+{% endblock %}

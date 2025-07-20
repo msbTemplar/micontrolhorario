@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} {# Si usas crispy forms, esta línea es necesaria #}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Tu Perfil</h2>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            Información del Usuario
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {% if form.instance.username %}
+                    {# Muestra el nombre de usuario como texto, no editable si no quieres que lo cambien #}
+                    {# Si lo quieres editable, comenta estas 3 líneas y descomenta la siguiente #}
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de Usuario:</label>
+                        <p class="form-control-plaintext"><strong>{{ form.instance.username }}</strong></p>
+                    </div>
+                    {{ form.username|as_crispy_field }}
+                {% else %}
+                    {# Esto es un fallback, en teoría siempre habrá username #}
+                    {{ form.username|as_crispy_field }} 
+                {% endif %}
+
+                {{ form.email|as_crispy_field }}
+                {{ form.first_name|as_crispy_field }}
+                {{ form.last_name|as_crispy_field }}
+                
+                <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Cambiar Contraseña
+        </div>
+        <div class="card-body">
+            <p>Haz clic aquí para cambiar tu contraseña de forma segura.</p>
+            <a href="{% url 'change_password' %}" class="btn btn-warning">Cambiar Contraseña</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

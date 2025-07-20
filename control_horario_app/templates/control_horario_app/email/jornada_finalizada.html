@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resumen de tu Jornada Laboral</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #007bff; /* Un azul más vibrante para destacar */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resumen de tu Jornada Laboral</h1>
+        
+        <p>Hola <span class="highlight">{{ user.username }}</span>,</p>
+        <p>Aquí tienes un resumen detallado de tu jornada del día <span class="highlight">{{ entry.start_time|date:"d/m/Y" }}</span>:</p>
+
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Valor</th>
+            </tr>
+            <tr>
+                <td><strong>Hora de Inicio</strong></td>
+                <td>{{ entry.start_time|time:"H:i" }}</td>
+            </tr>
+            <tr>
+                <td><strong>Hora de Fin</strong></td>
+                <td>{{ entry.end_time|time:"H:i" }}</td>
+            </tr>
+            {% if entry.break_start and entry.break_end %}
+            <tr>
+                <td><strong>Inicio Descanso</strong></td>
+                <td>{{ entry.break_start|time:"H:i" }}</td>
+            </tr>
+            <tr>
+                <td><strong>Fin Descanso</strong></td>
+                <td>{{ entry.break_end|time:"H:i" }}</td>
+            </tr>
+            {% elif entry.break_start and not entry.break_end %}
+            <tr>
+                <td><strong>Inicio Descanso</strong></td>
+                <td>{{ entry.break_start|time:"H:i" }} (Sin finalizar)</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td><strong>Descanso</strong></td>
+                <td>No registrado</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td><strong>Duración Neta de la Jornada</strong></td>
+                <td>
+                    {% if entry.duration %}
+                        <span class="highlight">{{ entry.duration|floatformat:2 }} horas</span>
+                    {% else %}
+                        No calculable (jornada incompleta)
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+
+        <p>Si tienes alguna pregunta o necesitas ajustar este registro, por favor contacta con el administrador.</p>
+        
+        <div class="footer">
+            <p>Saludos cordiales,</p>
+            <p>Tu Equipo de Gestión Horaria</p>
+            {# Opcional: <img src="URL_DE_TU_LOGO" alt="Logo de la Empresa" style="max-width: 100px; margin-top: 15px;"> #}
+            {# Aquí es donde pones tu logo #}
+            <img src="https://i.imgur.com/oNrnCFF.jpeg" alt="Logo de la Empresa" style="max-width: 150px; margin-top: 15px; margin-bottom: 20px;"> {# MODIFICADO Y DESCOMENTADO #}
+                    
+        </div>
+    </div>
+</body>
+</html>

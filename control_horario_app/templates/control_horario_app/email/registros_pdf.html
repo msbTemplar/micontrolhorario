@@ -1,0 +1,125 @@
+{% load tz %} {# Asegúrate de que esta línea esté al principio #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reporte de Registros Horarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        h1, h2 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .summary-box {
+            background-color: #e0f7fa; /* Un azul claro */
+            border: 1px solid #b2ebf2;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reporte de Registros Horarios</h1>
+        
+        <p>Reporte generado para: <strong>{{ user.username }}</strong></p>
+        {% if start_date or end_date %}
+            <p>Filtrado por fechas: 
+            {% if start_date %}Desde: <strong>{{ start_date }}</strong> {% endif %}
+            {% if end_date %}Hasta: <strong>{{ end_date }}</strong>{% endif %}</p>
+        {% else %}
+            <p>Todos los registros disponibles.</p>
+        {% endif %}
+        <p>Fecha de generación: {{ generated_date }}</p>
+
+        <hr>
+
+        <h2>Detalle de Registros</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Fecha</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Descanso</th>
+                    <th>Horas Netas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                <tr>
+                    <td>{{ entry.user.username }}</td>
+                    <td>{{ entry.start_time|timezone:spain_tz|date:"Y-m-d" }}</td>
+                    <td>{{ entry.start_time|timezone:spain_tz|time:"H:i" }}</td>
+                    <td>
+                        {% if entry.end_time %}
+                            {{ entry.end_time|timezone:spain_tz|time:"H:i" }}
+                        {% else %}
+                            En curso
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if entry.break_start and entry.break_end %}
+                            {{ entry.break_start|timezone:spain_tz|time:"H:i" }} - {{ entry.break_end|timezone:spain_tz|time:"H:i" }}
+                        {% elif entry.break_start and not entry.break_end %}
+                            {{ entry.break_start|timezone:spain_tz|time:"H:i" }} (activo)
+                        {% else %}
+                            No registrado
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if entry.duration %}
+                            {{ entry.duration|floatformat:2 }} h
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No hay registros para este reporte.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="footer">
+            <p>Este es un reporte automático generado por el sistema de Gestión Horaria.</p>
+        </div>
+    </div>
+</body>
+</html>

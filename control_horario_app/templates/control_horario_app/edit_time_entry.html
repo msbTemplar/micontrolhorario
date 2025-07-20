@@ -1,0 +1,307 @@
+{# control_horario_app/templates/control_horario_app/edit_time_entry.html #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Editar Registro de Jornada</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="card mb-4">
+        <div class="card-header">
+            Editando registro para {{ entry.user.username }} - {{ entry.start_time|date:"d/m/Y" }}
+        </div>
+        <div class="card-body">
+            <form method="post" id="timeEntryForm">
+                {% csrf_token %}
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="id_start_date" class="form-label">Fecha Inicio</label>
+                        <input type="date" class="form-control {% if form.start_date.errors %}is-invalid{% endif %}" id="id_start_date" name="{{ form.start_date.name }}" value="{{ form.start_date.value|date:'Y-m-d'|default_if_none:'' }}">
+                        <div class="invalid-feedback" id="error_start_date">
+                            {% if form.start_date.errors %}{{ form.start_date.errors.as_text }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="id_start_time_part" class="form-label">Hora Inicio</label>
+                        <input type="time" class="form-control {% if form.start_time_part.errors %}is-invalid{% endif %}" id="id_start_time_part" name="{{ form.start_time_part.name }}" value="{{ form.start_time_part.value|time:'H:i'|default_if_none:'' }}">
+                        <div class="invalid-feedback" id="error_start_time_part">
+                            {% if form.start_time_part.errors %}{{ form.start_time_part.errors.as_text }}{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="id_end_date" class="form-label">Fecha Fin</label>
+                        <input type="date" class="form-control {% if form.end_date.errors %}is-invalid{% endif %}" id="id_end_date" name="{{ form.end_date.name }}" value="{{ form.end_date.value|date:'Y-m-d'|default_if_none:'' }}">
+                        <div class="invalid-feedback" id="error_end_date">
+                            {% if form.end_date.errors %}{{ form.end_date.errors.as_text }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="id_end_time_part" class="form-label">Hora Fin</label>
+                        <input type="time" class="form-control {% if form.end_time_part.errors %}is-invalid{% endif %}" id="id_end_time_part" name="{{ form.end_time_part.name }}" value="{{ form.end_time_part.value|time:'H:i'|default_if_none:'' }}">
+                        <div class="invalid-feedback" id="error_end_time_part">
+                            {% if form.end_time_part.errors %}{{ form.end_time_part.errors.as_text }}{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="id_break_start_date" class="form-label">Fecha Inicio Descanso</label>
+                        <input type="date" class="form-control {% if form.break_start_date.errors %}is-invalid{% endif %}" id="id_break_start_date" name="{{ form.break_start_date.name }}" value="{{ form.break_start_date.value|date:'Y-m-d'|default_if_none:'' }}">
+                        <div class="invalid-feedback" id="error_break_start_date">
+                            {% if form.break_start_date.errors %}{{ form.break_start_date.errors.as_text }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="id_break_start_time_part" class="form-label">Hora Inicio Descanso</label>
+                        <input type="time" class="form-control {% if form.break_start_time_part.errors %}is-invalid{% endif %}" id="id_break_start_time_part" name="{{ form.break_start_time_part.name }}" value="{{ form.break_start_time_part.value|time:'H:i'|default_if_none:'' }}">
+                        <div class="invalid-feedback" id="error_break_start_time_part">
+                            {% if form.break_start_time_part.errors %}{{ form.break_start_time_part.errors.as_text }}{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="id_break_end_date" class="form-label">Fecha Fin Descanso</label>
+                        <input type="date" class="form-control {% if form.break_end_date.errors %}is-invalid{% endif %}" id="id_break_end_date" name="{{ form.break_end_date.name }}" value="{{ form.break_end_date.value|date:'Y-m-d'|default_if_none:'' }}">
+                        <div class="invalid-feedback" id="error_break_end_date">
+                            {% if form.break_end_date.errors %}{{ form.break_end_date.errors.as_text }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="id_break_end_time_part" class="form-label">Hora Fin Descanso</label>
+                        <input type="time" class="form-control {% if form.break_end_time_part.errors %}is-invalid{% endif %}" id="id_break_end_time_part" name="{{ form.break_end_time_part.name }}" value="{{ form.break_end_time_part.value|time:'H:i'|default_if_none:'' }}">
+                        <div class="invalid-feedback" id="error_break_end_time_part">
+                            {% if form.break_end_time_part.errors %}{{ form.break_end_time_part.errors.as_text }}{% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                {# CAMPO NOTES (solo para admin) #}
+                {# Se renderiza si form.notes existe, que es en TimeEntryEditForm #}
+                {% if form.notes %}
+                <div class="mb-3">
+                    <label for="id_notes" class="form-label">{{ form.notes.label }}</label>
+                    {{ form.notes }}
+                    <div class="invalid-feedback"> {# Removido d-block #}
+                        {% if form.notes.errors %}{{ form.notes.errors.as_text }}{% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {# CAMPO REASON (para ambos, admin y no-admin) #}
+                <div class="mb-3">
+                    <label for="id_reason" class="form-label">{{ form.reason.label }}</label>
+                    {{ form.reason }}
+                    <div class="invalid-feedback"> {# Removido d-block #}
+                        {% if form.reason.errors %}{{ form.reason.errors.as_text }}{% endif %}
+                    </div>
+                    <small class="form-text text-muted">{{ form.reason.help_text }}</small>
+                </div>
+
+                {# Errores del formulario no relacionados con campos específicos #}
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>Error:</strong>
+                        {% for error in form.non_field_errors %}{{ error }}<br>{% endfor %}
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const isAdmin = {{ is_admin|yesno:"true,false" }};
+        const formElement = document.getElementById('timeEntryForm');
+
+        function showError(elementId, message) {
+            const inputElement = document.getElementById(elementId);
+            const errorDiv = document.getElementById(`error_${elementId.replace('id_', '')}`);
+            if (inputElement) {
+                inputElement.classList.add('is-invalid');
+            }
+            if (errorDiv) {
+                errorDiv.textContent = message;
+            }
+        }
+
+        function clearError(elementId) {
+            const inputElement = document.getElementById(elementId);
+            const errorDiv = document.getElementById(`error_${elementId.replace('id_', '')}`);
+            if (inputElement) {
+                inputElement.classList.remove('is-invalid');
+            }
+            if (errorDiv) {
+                errorDiv.textContent = '';
+            }
+        }
+
+        function validateForm() {
+            let isValid = true;
+
+            // Limpiar todos los errores visuales antes de revalidar
+            document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+            document.querySelectorAll('.invalid-feedback').forEach(el => el.textContent = '');
+
+            // Validar campos obligatorios de fecha/hora
+            const requiredFields = [
+                'id_start_date', 'id_start_time_part'
+            ];
+            // 'id_reason' es obligatorio solo para usuarios no-admin por validación de backend.
+            // Para client-side, lo incluimos si es obligatorio según el formulario o si el campo existe.
+            if (!isAdmin) { 
+                requiredFields.push('id_reason');
+            }
+
+
+            requiredFields.forEach(fieldId => {
+                const element = document.getElementById(fieldId);
+                if (element && !element.value.trim()) {
+                    showError(fieldId, 'Este campo es obligatorio.');
+                    isValid = false;
+                } else {
+                    clearError(fieldId);
+                }
+            });
+
+            // Validaciones de pares de fecha/hora (opcionales pero si uno está, el otro debe estar)
+            const pairs = [
+                ['id_end_date', 'id_end_time_part', 'Se requieren ambos para Fecha/Hora Fin.'],
+                ['id_break_start_date', 'id_break_start_time_part', 'Se requieren ambos para Inicio Descanso.'],
+                ['id_break_end_date', 'id_break_end_time_part', 'Se requieren ambos para Fin Descanso.']
+            ];
+
+            pairs.forEach(pair => {
+                const dateField = document.getElementById(pair[0]);
+                const timeField = document.getElementById(pair[1]);
+                if (dateField && timeField) { // Asegura que los elementos existen
+                    if ((dateField.value.trim() && !timeField.value.trim()) ||
+                        (timeField.value.trim() && !dateField.value.trim())) {
+                        showError(pair[0], pair[2]);
+                        showError(pair[1], pair[2]);
+                        isValid = false;
+                    } else {
+                        clearError(pair[0]);
+                        clearError(pair[1]);
+                    }
+                }
+            });
+
+            // Validaciones de coherencia de tiempos (ej. fin > inicio)
+            // Usamos el operador ?. para acceder a .value de forma segura
+            const startDate = document.getElementById('id_start_date')?.value;
+            const startTimePart = document.getElementById('id_start_time_part')?.value;
+            const endDate = document.getElementById('id_end_date')?.value;
+            const endTimePart = document.getElementById('id_end_time_part')?.value;
+            const breakStartDate = document.getElementById('id_break_start_date')?.value;
+            const breakStartTimePart = document.getElementById('id_break_start_time_part')?.value;
+            const breakEndDate = document.getElementById('id_break_end_date')?.value;
+            const breakEndTimePart = document.getElementById('id_break_end_time_part')?.value;
+
+            // Combinar para validaciones de fecha/hora completa
+            const combinedStartTime = (startDate && startTimePart) ? new Date(`${startDate}T${startTimePart}`) : null;
+            const combinedEndTime = (endDate && endTimePart) ? new Date(`${endDate}T${endTimePart}`) : null;
+            const combinedBreakStartTime = (breakStartDate && breakStartTimePart) ? new Date(`${breakStartDate}T${breakStartTimePart}`) : null;
+            const combinedBreakEndTime = (breakEndDate && breakEndTimePart) ? new Date(`${breakEndDate}T${breakEndTimePart}`) : null;
+            
+            // Si hay un fin de jornada, debe ser posterior al inicio
+            if (combinedStartTime && combinedEndTime && combinedEndTime <= combinedStartTime) {
+                showError('id_end_date', 'La fecha/hora de fin debe ser posterior a la de inicio.');
+                showError('id_end_time_part', 'La fecha/hora de fin debe ser posterior a la de inicio.');
+                isValid = false;
+            } else {
+                // Solo limpiar si no hay otros errores en estos campos
+                const end_date_errors_div = document.getElementById('error_end_date');
+                if (end_date_errors_div && !end_date_errors_div.textContent) { 
+                    clearError('id_end_date');
+                    clearError('id_end_time_part');
+                }
+            }
+
+            // Si hay descanso, el fin debe ser posterior al inicio del descanso
+            if (combinedBreakStartTime && combinedBreakEndTime && combinedBreakEndTime <= combinedBreakStartTime) {
+                showError('id_break_end_date', 'El fin del descanso debe ser posterior al inicio del descanso.');
+                showError('id_break_end_time_part', 'El fin del descanso debe ser posterior al inicio del descanso.');
+                isValid = false;
+            } else {
+                const break_end_date_errors_div = document.getElementById('error_break_end_date');
+                if (break_end_date_errors_div && !break_end_date_errors_div.textContent) {
+                    clearError('id_break_end_date');
+                    clearError('id_break_end_time_part');
+                }
+            }
+
+            // El descanso debe estar dentro del horario de jornada
+            if (combinedStartTime && combinedEndTime && combinedBreakStartTime && combinedBreakEndTime) {
+                if (!(combinedStartTime <= combinedBreakStartTime && combinedBreakEndTime <= combinedEndTime)) {
+                    showError('id_break_start_date', 'El descanso debe estar completamente dentro del horario de jornada.');
+                    showError('id_break_start_time_part', 'El descanso debe estar completamente dentro del horario de jornada.');
+                    showError('id_break_end_date', 'El descanso debe estar completamente dentro del horario de jornada.');
+                    showError('id_break_end_time_part', 'El descanso debe estar completamente dentro del horario de jornada.');
+                    isValid = false;
+                } else {
+                    const break_start_date_errors_div = document.getElementById('error_break_start_date');
+                    if (break_start_date_errors_div && !break_start_date_errors_div.textContent) {
+                        clearError('id_break_start_date');
+                        clearError('id_break_start_time_part');
+                        clearError('id_break_end_date');
+                        clearError('id_break_end_time_part');
+                    }
+                }
+            }
+
+            return isValid;
+        }
+        
+        if (formElement) {
+            formElement.addEventListener('submit', function(event) {
+                // Ejecutar validateForm() en el submit para mostrar todos los errores de una vez
+                if (!validateForm()) {
+                    event.preventDefault();
+                    if (document.querySelectorAll('.is-invalid').length > 0) { // Solo si hay errores visibles
+                        Swal.fire({
+                            title: 'Error de Validación',
+                            text: 'Por favor, corrige los errores marcados en el formulario.',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    }
+                }
+            });
+
+            // Re-validar campos al cambiar para feedback en tiempo real
+            const fieldsToValidate = [
+                'id_start_date', 'id_start_time_part',
+                'id_end_date', 'id_end_time_part',
+                'id_break_start_date', 'id_break_start_time_part',
+                'id_break_end_date', 'id_break_end_time_part',
+                'id_reason' // Siempre incluye 'id_reason' aquí para la validación en tiempo real si está presente en el DOM
+            ];
+
+            fieldsToValidate.forEach(fieldId => {
+                const element = document.getElementById(fieldId);
+                if (element) {
+                    element.addEventListener('change', validateForm);
+                    element.addEventListener('input', validateForm); // También al escribir
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

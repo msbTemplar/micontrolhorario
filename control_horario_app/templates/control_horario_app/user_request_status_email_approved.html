@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { width: 80%; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header img { max-width: 150px; }
+        .content p { margin-bottom: 10px; }
+        .footer { text-align: center; font-size: 0.8em; color: #666; margin-top: 20px; }
+        .details { background-color: #f9f9f9; padding: 15px; border-left: 5px solid #4CAF50; margin-top: 20px; }
+        .details h4 { color: #4CAF50; }
+        .button { display: inline-block; padding: 10px 20px; margin-top: 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="{{ site_url_logo }}" alt="Logo de la Empresa">
+            <h2>Tu Solicitud de Modificación de Jornada ha sido Aprobada</h2>
+        </div>
+        <div class="content">
+            <p>Estimado/a {{ modification_request.requesting_user.username }},</p>
+            <p>Te informamos que tu solicitud de modificación del registro de jornada para el día <strong>{{ original_entry.start_time|date:"d M Y" }}</strong> ha sido **APROBADA** por un administrador.</p>
+            
+            <div class="details">
+                <h4>Detalles de los Cambios Aplicados:</h4>
+                <p><strong>Registro Original:</strong></p>
+                <ul>
+                    <li>Inicio: {{ original_entry.start_time|date:"d M Y H:i:s" }}</li>
+                    <li>Fin: {{ original_entry.end_time|default:"N/A"|date:"d M Y H:i:s" }}</li>
+                    <li>Descanso: {% if original_entry.break_start and original_entry.break_end %}{{ original_entry.break_start|date:"H:i" }} - {{ original_entry.break_end|date:"H:i" }}{% else %}N/A{% endif %}</li>
+                </ul>
+                <p><strong>Valores Solicitados y Aplicados:</strong></p>
+                <ul>
+                    <li>Inicio: {{ modification_request.requested_start_time|date:"d M Y H:i:s" }}</li>
+                    <li>Fin: {{ modification_request.requested_end_time|default:"N/A"|date:"d M Y H:i:s" }}</li>
+                    <li>Descanso: {% if modification_request.requested_break_start and modification_request.requested_break_end %}{{ modification_request.requested_break_start|date:"H:i" }} - {{ modification_request.requested_break_end|date:"H:i" }}{% else %}N/A{% endif %}</li>
+                </ul>
+                <p><strong>Razón de la solicitud:</strong> {{ modification_request.reason }}</p>
+                {% if modification_request.admin_notes %}
+                <p><strong>Notas del Administrador:</strong> {{ modification_request.admin_notes }}</p>
+                {% endif %}
+            </div>
+
+            <p>Los cambios se han aplicado al registro de jornada.</p>
+            <p>Puedes revisar el registro actualizado en tu historial:</p>
+            <a href="{{ original_entry_url }}" class="button">Ver Mi Jornada</a>
+            
+            <p>Gracias por tu paciencia.</p>
+            <p>Atentamente,</p>
+            <p>El equipo de {{ company_name }}</p>
+        </div>
+        <div class="footer">
+            <p>&copy; {{ "now"|date:"Y" }} {{ company_name }}. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

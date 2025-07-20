@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Solicitud de Modificación de Jornada - {{ requesting_user.username }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #d9534f; /* Rojo para alertar que es una solicitud */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .info-section {
+            background-color: #f9f9f9;
+            border-left: 4px solid #f0ad4e; /* Naranja para destacar */
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+            color: #333;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+        .button-link {
+            display: inline-block;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Nueva Solicitud de Modificación de Jornada!</h1>
+        
+        <p>Hola {{ admin_name }},</p>
+        <p>El usuario <span style="font-weight: bold; color: #5cb85c;">{{ requesting_user.username }}</span> ha enviado una solicitud de modificación para uno de sus registros de jornada.</p>
+
+        <div class="info-section">
+            <p><strong>Registro Original (ID: {{ original_entry.id }}):</strong></p>
+            <ul>
+                <li>Fecha de Jornada: {{ original_entry.start_time|date:"d/m/Y" }}</li>
+                <li>Inicio: {{ original_entry.start_time|time:"H:i" }}</li>
+                <li>Fin: {% if original_entry.end_time %}{{ original_entry.end_time|time:"H:i" }}{% else %}N/A{% endif %}</li>
+                <li>Descanso: {% if original_entry.break_start %}{{ original_entry.break_start|time:"H:i" }}{% else %}N/A{% endif %} - {% if original_entry.break_end %}{{ original_entry.break_end|time:"H:i" }}{% else %}N/A{% endif %}</li>
+                <li>Notas: {{ original_entry.notes|default:"Ninguna" }}</li>
+            </ul>
+        </div>
+
+        <p><strong>Valores solicitados (cambios propuestos):</strong></p>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Valor Solicitado</th>
+            </tr>
+            <tr>
+                <td>Fecha de Inicio</td>
+                <td>{{ requested_start_time|date:"d/m/Y" }}</td>
+            </tr>
+            <tr>
+                <td>Hora de Inicio</td>
+                <td>{{ requested_start_time|time:"H:i" }}</td>
+            </tr>
+            <tr>
+                <td>Fecha de Fin</td>
+                <td>{% if requested_end_time %}{{ requested_end_time|date:"d/m/Y" }}{% else %}Vacío{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Hora de Fin</td>
+                <td>{% if requested_end_time %}{{ requested_end_time|time:"H:i" }}{% else %}Vacío{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Inicio Descanso</td>
+                <td>{% if requested_break_start %}{{ requested_break_start|time:"H:i" }}{% else %}Vacío{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Fin Descanso</td>
+                <td>{% if requested_break_end %}{{ requested_break_end|time:"H:i" }}{% else %}Vacío{% endif %}</td>
+            </tr>
+        </table>
+        
+        {% if reason %}
+            <p><strong>Razón de la solicitud:</strong></p>
+            <p>"{{ reason }}"</p>
+        {% endif %}
+
+        <p style="text-align: center;">
+            <a href="{{ entry_url_for_admin }}" class="button-link">Revisar y Editar Registro (Ir a la Aplicación)</a>
+        </p>
+
+        <div class="footer">
+            <p>Saludos,</p>
+            <p>Tu Equipo de {{ company_name }}</p>
+            {% if site_url_logo %}
+                <img src="https://i.imgur.com/oNrnCFF.jpeg" alt="Logo de la Empresa" style="max-width: 100px; margin-top: 15px;">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

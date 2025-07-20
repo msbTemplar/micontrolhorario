@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estado de su Solicitud de Modificación de Jornada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .approved {
+            color: #28a745; /* Verde */
+            font-weight: bold;
+        }
+        .rejected {
+            color: #dc3545; /* Rojo */
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+            color: #333;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Estado de su Solicitud de Modificación de Jornada</h1>
+        
+        <p>Hola {{ requesting_user.username }},</p>
+        <p>Le informamos sobre el estado de su solicitud de modificación para el registro de jornada del día <strong>{{ original_entry.start_time|date:"d/m/Y" }}</strong>.</p>
+
+        <p>Su solicitud ha sido: 
+            {% if status == 'approved' %}
+                <span class="approved">APROBADA</span>
+            {% elif status == 'rejected' %}
+                <span class="rejected">RECHAZADA</span>
+            {% else %}
+                <span>{{ status|upper }}</span>
+            {% endif %}
+        </p>
+
+        <p><strong>Detalles de la Solicitud:</strong></p>
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Valor Solicitado</th>
+            </tr>
+            <tr>
+                <td>Fecha de Inicio</td>
+                <td>{{ modification_request.requested_start_time|date:"d/m/Y" }}</td>
+            </tr>
+            <tr>
+                <td>Hora de Inicio</td>
+                <td>{{ modification_request.requested_start_time|time:"H:i" }}</td>
+            </tr>
+            <tr>
+                <td>Fecha de Fin</td>
+                <td>{% if modification_request.requested_end_time %}{{ modification_request.requested_end_time|date:"d/m/Y" }}{% else %}Vacío{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Hora de Fin</td>
+                <td>{% if modification_request.requested_end_time %}{{ modification_request.requested_end_time|time:"H:i" }}{% else %}Vacío{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Inicio Descanso</td>
+                <td>{% if modification_request.requested_break_start %}{{ modification_request.requested_break_start|time:"H:i" }}{% else %}Vacío{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Fin Descanso</td>
+                <td>{% if modification_request.requested_break_end %}{{ modification_request.requested_break_end|time:"H:i" }}{% else %}Vacío{% endif %}</td>
+            </tr>
+        </table>
+
+        {% if modification_request.reason %}
+            <p><strong>Su razón para la solicitud:</strong></p>
+            <p>"{{ modification_request.reason }}"</p>
+        {% endif %}
+
+        {% if status == 'rejected' and admin_notes %}
+            <p><strong>Notas del administrador:</strong></p>
+            <p>"{{ admin_notes }}"</p>
+        {% endif %}
+
+        <p>Puede ver sus registros de jornada <a href="{{ request.build_absolute_uri('/') }}dashboard/">aquí</a>.</p>
+
+        <div class="footer">
+            <p>Saludos cordiales,</p>
+            <p>El Equipo de {{ company_name }}</p>
+            {% if site_url_logo %}
+                <img src="https://i.imgur.com/oNrnCFF.jpeg" alt="Logo de la Empresa" style="max-width: 100px; margin-top: 15px;">
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

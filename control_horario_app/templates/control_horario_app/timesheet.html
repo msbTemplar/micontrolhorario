@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Registro Horario</h2>
+
+<div class="mt-4">
+    {% if show_completed_message %}
+        <div class="alert alert-info" role="alert">
+            ¡Tu jornada de hoy ya ha sido completada!
+        </div>
+    {% elif not current_entry %}
+        {% if not has_active_or_completed_entry_today %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="start">
+                <button type="submit" class="btn btn-success">Iniciar Jornada</button>
+            </form>
+        {% endif %}
+    {% else %}
+        {# Hay una jornada activa, muestra los botones de gestión y el temporizador #}
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="entry_id" value="{{ current_entry.id }}">
+            
+            {% if not current_entry.break_start %}
+                <input type="hidden" name="action" value="break_start">
+                <button type="submit" class="btn btn-warning">Iniciar Descanso</button>
+            {% elif not current_entry.break_end %}
+                <input type="hidden" name="action" value="break_end">
+                <button type="submit" class="btn btn-warning">Finalizar Descanso</button>
+            {% else %}
+                <input type="hidden" name="action" value="end">
+                <button type="submit" class="btn btn-danger">Finalizar Jornada</button>
+            {% endif %}
+        </form>
+
+        <hr class="my-4">
+
+        {# Sección del Temporizador #}
+        <div class="text-center mt-4">
+            {% if not current_entry.break_start %}
+                {# Jornada activa, sin descanso iniciado #}
+                <h3>Jornada Actual</h3>
+                <p class="display-4 text-primary" id="timer"></p>
+                <p class="text-muted">Iniciada a las {{ current_entry.start_time|time:"H:i:s" }}</p>
+                <input type="hidden" id="start_timestamp" value="{{ current_entry.start_time|date:'U' }}"> {# Unix timestamp #}
+                <input type="hidden" id="timer_mode" value="work">
+            {% elif current_entry.break_start and not current_entry.break_end %}
+                {# Descanso activo #}
+                <h3>Tiempo de Descanso</h3>
+                <p class="display-4 text-warning" id="timer"></p>
+                <p class="text-muted">Descanso iniciado a las {{ current_entry.break_start|time:"H:i:s" }}</p>
+                <input type="hidden" id="start_timestamp" value="{{ current_entry.break_start|date:'U' }}"> {# Unix timestamp #}
+                <input type="hidden" id="timer_mode" value="break">
+            {% else %}
+                {# Descanso finalizado, esperando finalizar jornada #}
+                <h3>Jornada Activa (después de descanso)</h3>
+                <p class="display-4 text-success" id="timer"></p>
+                <p class="text-muted">Iniciada a las {{ current_entry.start_time|time:"H:i:s" }}</p>
+                <input type="hidden" id="start_timestamp" value="{{ current_entry.start_time|date:'U' }}"> {# Unix timestamp #}
+                <input type="hidden" id="break_start_timestamp" value="{{ current_entry.break_start|date:'U' }}">
+                <input type="hidden" id="break_end_timestamp" value="{{ current_entry.break_end|date:'U' }}">
+                <input type="hidden" id="timer_mode" value="post_break_work">
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+{# Script para el temporizador #}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const timerElement = document.getElementById('timer');
+        const startTimestamp = document.getElementById('start_timestamp');
+        const timerMode = document.getElementById('timer_mode');
+
+        if (timerElement && startTimestamp && timerMode) {
+            const startTime = parseInt(startTimestamp.value) * 1000; // Convertir a milisegundos
+            const mode = timerMode.value;
+
+            // Para el modo 'post_break_work', necesitamos calcular el tiempo de descanso
+            let breakDurationMs = 0;
+            if (mode === 'post_break_work') {
+                const breakStartTimestamp = document.getElementById('break_start_timestamp');
+                const breakEndTimestamp = document.getElementById('break_end_timestamp');
+                if (breakStartTimestamp && breakEndTimestamp) {
+                    const breakStartTime = parseInt(breakStartTimestamp.value) * 1000;
+                    const breakEndTime = parseInt(breakEndTimestamp.value) * 1000;
+                    breakDurationMs = breakEndTime - breakStartTime;
+                }
+            }
+
+            function updateTimer() {
+                const now = new Date().getTime(); // Tiempo actual en milisegundos
+                let elapsedMs;
+
+                if (mode === 'work' || mode === 'break') {
+                    elapsedMs = now - startTime;
+                } else if (mode === 'post_break_work') {
+                    elapsedMs = (now - startTime) - breakDurationMs;
+                }
+                
+                const hours = Math.floor(elapsedMs / (1000 * 60 * 60));
+                const minutes = Math.floor((elapsedMs % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((elapsedMs % (1000 * 60)) / 1000);
+
+                const formattedTime = 
+                    String(hours).padStart(2, '0') + ':' +
+                    String(minutes).padStart(2, '0') + ':' +
+                    String(seconds).padStart(2, '0');
+                
+                timerElement.textContent = formattedTime;
+            }
+
+            // Actualizar el temporizador cada segundo
+            setInterval(updateTimer, 1000);
+            updateTimer(); // Llamar una vez al inicio para que no haya un retraso de 1 segundo
+        }
+    });
+</script>
+{% endblock %}
