@@ -24,6 +24,21 @@ git push -u origin main
 
 pip freeze > requirements.txt
 
+hotdish74@gmail.com
+
+https://www.youtube.com/watch?v=CdtQSiC8ZNQ  deploy
+
+
+https://github.com/msbTemplar/micontrolhorario.git
+
+
+(venv) 09:04 ~/micontrolhorario (main)$ ls
+
+s at '/home/controlhorario/mysite/manage.py'
+
+controlhorario.pythonanywhere.com
+
+
 
 
 GestionAsmae

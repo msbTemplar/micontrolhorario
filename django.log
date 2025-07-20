@@ -4877,3 +4877,9 @@ INFO 2025-07-20 10:49:12,229 basehttp 24188 16804 "GET /timesheet/ HTTP/1.1" 200
 INFO 2025-07-20 10:49:14,945 basehttp 24188 16804 "GET /dashboard/ HTTP/1.1" 200 16265
 INFO 2025-07-20 10:49:15,805 basehttp 24188 16804 "GET /admin-requests/ HTTP/1.1" 200 4920
 INFO 2025-07-20 10:49:19,964 basehttp 24188 16804 "GET /profile/ HTTP/1.1" 200 7330
+WARNING 2025-07-20 11:13:50,906 log 24188 15752 Not Found: /
+WARNING 2025-07-20 11:13:50,907 basehttp 24188 15752 "GET / HTTP/1.1" 404 6803
+WARNING 2025-07-20 11:13:50,994 log 24188 15752 Not Found: /favicon.ico
+INFO 2025-07-20 11:13:50,996 basehttp 24188 15752 - Broken pipe from ('127.0.0.1', 64762)
+INFO 2025-07-20 11:14:51,260 autoreload 24188 23180 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\urls.py changed, reloading.
+INFO 2025-07-20 11:14:52,930 autoreload 21720 1880 Watching for file changes with StatReloader

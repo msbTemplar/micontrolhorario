@@ -21,7 +21,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     
-  
+    path('', views.login_view, name='root'), # ¡AÑADE ESTA LÍNEA!
     path('set_cookie_consent/', views.set_cookie_consent, name='set_cookie_consent'),
     
     path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
