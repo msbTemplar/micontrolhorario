@@ -8,7 +8,6 @@
             ¡Tu jornada de hoy ya ha sido completada!
         </div>
     {% elif not current_entry %}
-        {# Si no hay ninguna jornada activa ni completada hoy #}
         {% if not has_active_or_completed_entry_today %}
             <form method="post">
                 {% csrf_token %}
@@ -17,43 +16,26 @@
             </form>
         {% endif %}
     {% else %}
-        {# Hay una jornada activa, muestra los botones de gestión #}
-        
-        {# Condición: Jornada iniciada, sin descanso iniciado #}
-        {% if not current_entry.break_start %}
-            <form method="post" style="display:inline-block; margin-right: 10px;">
-                {% csrf_token %}
-                <input type="hidden" name="entry_id" value="{{ current_entry.id }}">
+        {# Hay una jornada activa, muestra los botones de gestión y el temporizador #}
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="entry_id" value="{{ current_entry.id }}">
+            
+            {% if not current_entry.break_start %}
                 <input type="hidden" name="action" value="break_start">
                 <button type="submit" class="btn btn-warning">Iniciar Descanso</button>
-            </form>
-            <form method="post" style="display:inline-block;"> {# Nuevo formulario para Finalizar Jornada #}
-                {% csrf_token %}
-                <input type="hidden" name="entry_id" value="{{ current_entry.id }}">
-                <input type="hidden" name="action" value="end"> {# Esta es la acción para finalizar la jornada #}
-                <button type="submit" class="btn btn-danger">Finalizar Jornada</button>
-            </form>
-        {# Condición: Descanso iniciado, pero no finalizado #}
-        {% elif not current_entry.break_end %}
-            <form method="post">
-                {% csrf_token %}
-                <input type="hidden" name="entry_id" value="{{ current_entry.id }}">
+            {% elif not current_entry.break_end %}
                 <input type="hidden" name="action" value="break_end">
                 <button type="submit" class="btn btn-warning">Finalizar Descanso</button>
-            </form>
-        {# Condición: Descanso finalizado (o jornada iniciada y descanso también finalizado) #}
-        {% else %}
-            <form method="post">
-                {% csrf_token %}
-                <input type="hidden" name="entry_id" value="{{ current_entry.id }}">
+            {% else %}
                 <input type="hidden" name="action" value="end">
                 <button type="submit" class="btn btn-danger">Finalizar Jornada</button>
-            </form>
-        {% endif %}
+            {% endif %}
+        </form>
 
         <hr class="my-4">
-
-        {# Sección del Temporizador (sin cambios) #}
+        
+        {# Sección del Temporizador #}
         <div class="text-center mt-4">
             {% if not current_entry.break_start %}
                 {# Jornada activa, sin descanso iniciado #}
@@ -86,7 +68,7 @@
 {% endblock %}
 
 {% block extra_js %}
-{# Script para el temporizador (sin cambios) #}
+{# Script para el temporizador #}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const timerElement = document.getElementById('timer');

@@ -4889,3 +4889,592 @@ INFO 2025-07-20 11:15:09,866 basehttp 21720 24420 "GET /dashboard/ HTTP/1.1" 200
 INFO 2025-07-20 11:15:11,220 basehttp 21720 24420 "GET /logout/ HTTP/1.1" 302 0
 INFO 2025-07-20 11:15:11,228 basehttp 21720 24420 "GET /login/ HTTP/1.1" 200 3077
 INFO 2025-07-20 13:24:25,546 autoreload 21640 26248 Watching for file changes with StatReloader
+INFO 2025-07-20 13:25:32,834 basehttp 21640 16876 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-07-20 13:25:33,003 basehttp 21640 16876 "GET /dashboard/ HTTP/1.1" 200 24700
+INFO 2025-07-25 08:52:20,349 autoreload 20028 13596 Watching for file changes with StatReloader
+INFO 2025-07-25 08:52:42,729 basehttp 20028 28416 "GET /dashboard/ HTTP/1.1" 302 0
+WARNING 2025-07-25 08:52:42,809 log 20028 28416 Not Found: /accounts/login/
+WARNING 2025-07-25 08:52:42,810 basehttp 20028 28416 "GET /accounts/login/?next=/dashboard/ HTTP/1.1" 404 7129
+WARNING 2025-07-25 08:52:43,073 log 20028 28416 Not Found: /favicon.ico
+WARNING 2025-07-25 08:52:43,087 basehttp 20028 28416 "GET /favicon.ico HTTP/1.1" 404 7100
+INFO 2025-07-25 08:52:46,001 basehttp 20028 28416 "GET /login/ HTTP/1.1" 200 11512
+INFO 2025-07-25 08:52:46,941 basehttp 20028 28416 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-07-25 08:52:48,990 basehttp 20028 28416 "GET /login/ HTTP/1.1" 200 11512
+INFO 2025-07-25 08:52:51,720 basehttp 20028 28416 "GET /login/ HTTP/1.1" 200 11512
+INFO 2025-07-25 08:52:57,743 basehttp 20028 28416 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-07-25 08:53:07,460 basehttp 20028 28416 "GET /dashboard/ HTTP/1.1" 200 23612
+INFO 2025-07-25 08:53:14,715 basehttp 20028 28416 "GET /timesheet/ HTTP/1.1" 200 13624
+INFO 2025-07-25 08:53:16,854 basehttp 20028 28416 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 08:53:16,887 basehttp 20028 28416 "GET /timesheet/ HTTP/1.1" 200 15109
+INFO 2025-07-25 08:58:39,740 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 14162
+INFO 2025-07-25 08:59:46,255 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 14170
+INFO 2025-07-25 09:00:32,516 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 14170
+INFO 2025-07-25 09:00:35,726 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 14674
+INFO 2025-07-25 09:00:46,155 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:00:46,188 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 14371
+INFO 2025-07-25 09:00:52,008 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 24689
+INFO 2025-07-25 09:00:58,735 basehttp 20028 28284 "POST /delete-entry/28/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:00:58,769 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 24589
+INFO 2025-07-25 09:01:04,548 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 13633
+INFO 2025-07-25 09:01:06,714 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:01:06,732 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15621
+INFO 2025-07-25 09:01:10,386 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:01:10,405 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15125
+INFO 2025-07-25 09:01:14,221 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:01:14,253 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15298
+INFO 2025-07-25 09:01:22,061 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:01:22,093 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 14371
+INFO 2025-07-25 09:01:31,567 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 24689
+INFO 2025-07-25 09:01:37,038 basehttp 20028 28284 "POST /delete-entry/29/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:01:37,073 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 24589
+INFO 2025-07-25 09:01:41,701 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 13633
+INFO 2025-07-25 09:01:43,076 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:01:43,091 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15621
+INFO 2025-07-25 09:01:49,804 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:01:49,833 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 14371
+INFO 2025-07-25 09:01:57,347 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 24689
+INFO 2025-07-25 09:02:04,072 basehttp 20028 28284 "POST /delete-entry/30/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:02:04,108 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 24589
+INFO 2025-07-25 09:02:07,898 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 13633
+INFO 2025-07-25 09:02:09,092 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:02:09,116 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15621
+INFO 2025-07-25 09:02:12,464 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:02:12,485 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15125
+INFO 2025-07-25 09:02:15,471 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:02:15,489 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15298
+INFO 2025-07-25 09:02:26,675 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:02:26,705 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 14371
+INFO 2025-07-25 09:02:33,446 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 24689
+INFO 2025-07-25 09:02:37,315 basehttp 20028 28284 "POST /delete-entry/31/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:02:37,359 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 24589
+INFO 2025-07-25 09:02:42,513 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 13633
+INFO 2025-07-25 09:02:43,956 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:02:43,971 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15621
+INFO 2025-07-25 09:02:47,092 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:02:47,121 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15125
+INFO 2025-07-25 09:02:51,754 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:02:51,772 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15298
+INFO 2025-07-25 09:02:58,978 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:02:58,990 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 14371
+INFO 2025-07-25 09:03:03,374 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 24689
+INFO 2025-07-25 09:03:08,945 basehttp 20028 28284 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:03:08,965 basehttp 20028 28284 "GET /login/ HTTP/1.1" 200 10424
+INFO 2025-07-25 09:03:22,386 basehttp 20028 28284 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:03:22,404 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 20515
+INFO 2025-07-25 09:03:58,102 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 20515
+ERROR 2025-07-25 09:04:08,151 log 20028 28284 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 937, in dashboard_view
+    return render(request, 'control_horario_app/dashboard.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 523, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 590, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 20: 'if'. Looking for one of: elif, else, endif.
+ERROR 2025-07-25 09:04:08,171 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 500 211496
+ERROR 2025-07-25 09:04:19,806 log 20028 28284 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'else'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 937, in dashboard_view
+    return render(request, 'control_horario_app/dashboard.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 53: 'else'. Did you forget to register or load this tag?
+ERROR 2025-07-25 09:04:19,823 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 500 216314
+ERROR 2025-07-25 09:04:26,250 log 20028 28284 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 937, in dashboard_view
+    return render(request, 'control_horario_app/dashboard.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 523, in parse
+    self.unclosed_block_tag(parse_until)
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\base.py", line 590, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 20: 'if'. Looking for one of: elif, else, endif.
+ERROR 2025-07-25 09:04:26,265 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 500 211484
+INFO 2025-07-25 09:04:30,934 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 20351
+INFO 2025-07-25 09:04:39,283 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 13189
+INFO 2025-07-25 09:04:40,675 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:04:40,692 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 15177
+INFO 2025-07-25 09:04:45,762 basehttp 20028 28284 "POST /timesheet/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:04:45,776 basehttp 20028 28284 "GET /timesheet/ HTTP/1.1" 200 13927
+INFO 2025-07-25 09:04:48,750 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 21133
+INFO 2025-07-25 09:04:58,853 basehttp 20028 28284 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:04:58,859 basehttp 20028 28284 "GET /login/ HTTP/1.1" 200 10424
+INFO 2025-07-25 09:05:02,996 basehttp 20028 28284 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:05:03,035 basehttp 20028 28284 "GET /dashboard/ HTTP/1.1" 200 25878
+INFO 2025-07-25 09:08:05,628 basehttp 20028 16144 "GET /profile/ HTTP/1.1" 200 14786
+INFO 2025-07-25 09:11:06,937 autoreload 20028 13596 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\models.py changed, reloading.
+INFO 2025-07-25 09:11:08,861 autoreload 18864 24076 Watching for file changes with StatReloader
+INFO 2025-07-25 09:11:13,495 basehttp 18864 12572 "GET /profile/ HTTP/1.1" 200 14786
+INFO 2025-07-25 09:11:23,448 autoreload 18864 24076 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\models.py changed, reloading.
+INFO 2025-07-25 09:11:24,886 autoreload 13664 11724 Watching for file changes with StatReloader
+INFO 2025-07-25 09:11:27,523 basehttp 13664 11496 "GET /profile/ HTTP/1.1" 200 14786
+INFO 2025-07-25 09:12:57,708 autoreload 13664 11724 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\admin.py changed, reloading.
+INFO 2025-07-25 09:12:58,834 autoreload 6044 20300 Watching for file changes with StatReloader
+INFO 2025-07-25 09:13:01,565 basehttp 6044 14956 "GET /profile/ HTTP/1.1" 200 14786
+INFO 2025-07-25 09:14:03,350 autoreload 6044 20300 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\admin.py changed, reloading.
+INFO 2025-07-25 09:14:04,876 autoreload 27284 13836 Watching for file changes with StatReloader
+INFO 2025-07-25 09:14:07,709 basehttp 27284 17972 "GET /profile/ HTTP/1.1" 200 14786
+INFO 2025-07-25 09:14:28,623 autoreload 27284 13836 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\admin.py changed, reloading.
+INFO 2025-07-25 09:14:29,891 autoreload 28256 22920 Watching for file changes with StatReloader
+INFO 2025-07-25 09:14:47,261 autoreload 28256 22920 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\admin.py changed, reloading.
+INFO 2025-07-25 09:14:48,369 autoreload 3936 18912 Watching for file changes with StatReloader
+INFO 2025-07-25 09:14:51,075 basehttp 3936 24120 "GET /profile/ HTTP/1.1" 200 14786
+INFO 2025-07-25 09:15:15,543 autoreload 3936 18912 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\models.py changed, reloading.
+INFO 2025-07-25 09:15:17,047 autoreload 25672 28604 Watching for file changes with StatReloader
+INFO 2025-07-25 09:15:19,833 basehttp 25672 17192 "GET /profile/ HTTP/1.1" 200 14786
+INFO 2025-07-25 09:15:21,940 autoreload 25672 28604 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\models.py changed, reloading.
+INFO 2025-07-25 09:15:23,265 autoreload 19500 19556 Watching for file changes with StatReloader
+INFO 2025-07-25 09:15:26,070 basehttp 19500 17536 "GET /profile/ HTTP/1.1" 200 14786
+INFO 2025-07-25 09:16:07,955 autoreload 19500 19556 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\admin.py changed, reloading.
+INFO 2025-07-25 09:16:09,074 autoreload 25972 3684 Watching for file changes with StatReloader
+INFO 2025-07-25 09:16:13,240 autoreload 25972 3684 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\admin.py changed, reloading.
+INFO 2025-07-25 09:16:14,577 autoreload 4644 13664 Watching for file changes with StatReloader
+INFO 2025-07-25 09:16:25,225 autoreload 4644 13664 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\admin.py changed, reloading.
+INFO 2025-07-25 09:16:26,775 autoreload 25940 28536 Watching for file changes with StatReloader
+INFO 2025-07-25 09:16:31,631 autoreload 25940 28536 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\admin.py changed, reloading.
+INFO 2025-07-25 09:16:32,841 autoreload 20484 10336 Watching for file changes with StatReloader
+INFO 2025-07-25 09:16:35,663 basehttp 20484 2232 "GET /profile/ HTTP/1.1" 200 14786
+INFO 2025-07-25 09:16:41,452 basehttp 20484 2232 "GET /admin/login/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:16:41,624 basehttp 20484 2232 "GET /admin/ HTTP/1.1" 200 12207
+INFO 2025-07-25 09:16:41,706 basehttp 20484 2232 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-07-25 09:16:41,719 basehttp 20484 25292 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-07-25 09:16:41,721 basehttp 20484 19920 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-07-25 09:16:41,726 basehttp 20484 13288 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-07-25 09:16:41,738 basehttp 20484 2232 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-07-25 09:16:41,738 basehttp 20484 24424 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-07-25 09:16:41,747 basehttp 20484 19196 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-07-25 09:16:41,787 basehttp 20484 19920 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-07-25 09:16:41,787 basehttp 20484 19196 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-07-25 09:16:41,787 basehttp 20484 25292 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-07-25 09:16:45,787 basehttp 20484 2232 "GET /admin/control_horario_app/company/ HTTP/1.1" 200 11089
+INFO 2025-07-25 09:16:45,866 basehttp 20484 19196 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-07-25 09:16:45,874 basehttp 20484 24424 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-07-25 09:16:45,887 basehttp 20484 13288 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-07-25 09:16:45,898 basehttp 20484 25292 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-25 09:16:45,898 basehttp 20484 2232 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-07-25 09:16:45,914 basehttp 20484 24424 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-07-25 09:16:45,917 basehttp 20484 19196 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-07-25 09:16:45,925 basehttp 20484 13288 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-07-25 09:16:45,932 basehttp 20484 2232 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-07-25 09:16:45,970 basehttp 20484 19920 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-07-25 09:16:46,078 basehttp 20484 25292 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-07-25 09:16:46,091 basehttp 20484 19920 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-07-25 09:16:46,131 basehttp 20484 19920 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-07-25 09:16:46,132 basehttp 20484 25292 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-07-25 09:16:53,924 basehttp 20484 25292 "GET /admin/control_horario_app/company/add/ HTTP/1.1" 200 12834
+INFO 2025-07-25 09:16:53,985 basehttp 20484 19920 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-25 09:16:53,999 basehttp 20484 25292 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-07-25 09:16:54,015 basehttp 20484 19920 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-07-25 09:16:54,016 basehttp 20484 19196 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-07-25 09:16:54,031 basehttp 20484 25292 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-07-25 09:18:05,476 basehttp 20484 25292 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-07-25 09:18:05,485 basehttp 20484 25292 "GET /login/ HTTP/1.1" 200 10424
+INFO 2025-07-25 09:18:07,726 basehttp 20484 25292 "GET /register/ HTTP/1.1" 200 11186
+INFO 2025-07-25 09:19:41,268 autoreload 20484 10336 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py changed, reloading.
+INFO 2025-07-25 09:19:43,147 autoreload 20316 13324 Watching for file changes with StatReloader
+INFO 2025-07-25 09:19:47,064 autoreload 20316 13324 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py changed, reloading.
+INFO 2025-07-25 09:19:48,657 autoreload 2332 2820 Watching for file changes with StatReloader
+INFO 2025-07-25 09:19:51,597 basehttp 2332 28276 "GET /admin/control_horario_app/company/add/ HTTP/1.1" 302 0
+ERROR 2025-07-25 09:19:51,725 log 2332 23548 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 826, in register_view
+    form = RegisterForm() # Usa tu RegisterForm personalizado aquí
+           ^^^^^^^^^^^^
+NameError: name 'RegisterForm' is not defined
+ERROR 2025-07-25 09:19:51,743 basehttp 2332 23548 "GET /register/ HTTP/1.1" 500 76343
+INFO 2025-07-25 09:19:51,764 basehttp 2332 28276 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:19:51,834 basehttp 2332 28276 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-07-25 09:20:08,151 autoreload 2332 2820 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py changed, reloading.
+INFO 2025-07-25 09:20:09,556 autoreload 20336 17396 Watching for file changes with StatReloader
+ERROR 2025-07-25 09:20:12,302 log 20336 13428 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 826, in register_view
+    form = RegisterForm() # Usa tu RegisterForm personalizado aquí
+           ^^^^^^^^^^^^
+NameError: name 'RegisterForm' is not defined
+ERROR 2025-07-25 09:20:12,315 basehttp 20336 13428 "GET /register/ HTTP/1.1" 500 76343
+INFO 2025-07-25 09:20:12,325 basehttp 20336 23968 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:20:20,945 autoreload 20336 17396 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py changed, reloading.
+INFO 2025-07-25 09:20:22,662 autoreload 1000 13660 Watching for file changes with StatReloader
+ERROR 2025-07-25 09:20:25,566 log 1000 20548 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 826, in register_view
+    form = RegisterForm() # Usa tu RegisterForm personalizado aquí
+           ^^^^^^^^^^^^
+NameError: name 'RegisterForm' is not defined
+ERROR 2025-07-25 09:20:25,583 basehttp 1000 20548 "GET /register/ HTTP/1.1" 500 76343
+INFO 2025-07-25 09:20:25,602 basehttp 1000 13696 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:23:07,076 autoreload 1000 13660 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\forms.py changed, reloading.
+INFO 2025-07-25 09:23:08,551 autoreload 16696 11684 Watching for file changes with StatReloader
+ERROR 2025-07-25 09:23:11,700 log 16696 11004 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 826, in register_view
+    form = RegisterForm() # Usa tu RegisterForm personalizado aquí
+           ^^^^^^^^^^^^
+NameError: name 'RegisterForm' is not defined
+ERROR 2025-07-25 09:23:11,713 basehttp 16696 11004 "GET /register/ HTTP/1.1" 500 76343
+INFO 2025-07-25 09:23:11,722 basehttp 16696 6404 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:23:19,322 autoreload 16696 11684 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\forms.py changed, reloading.
+INFO 2025-07-25 09:23:20,660 autoreload 23076 5580 Watching for file changes with StatReloader
+ERROR 2025-07-25 09:23:23,826 log 23076 1164 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 826, in register_view
+    form = RegisterForm() # Usa tu RegisterForm personalizado aquí
+           ^^^^^^^^^^^^
+NameError: name 'RegisterForm' is not defined
+ERROR 2025-07-25 09:23:23,839 basehttp 23076 1164 "GET /register/ HTTP/1.1" 500 76343
+INFO 2025-07-25 09:23:23,852 basehttp 23076 2356 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:23:47,033 autoreload 23076 5580 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\forms.py changed, reloading.
+INFO 2025-07-25 09:23:48,197 autoreload 21972 2376 Watching for file changes with StatReloader
+INFO 2025-07-25 09:23:53,660 autoreload 21972 2376 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\forms.py changed, reloading.
+INFO 2025-07-25 09:23:55,043 autoreload 11416 7972 Watching for file changes with StatReloader
+INFO 2025-07-25 09:24:40,143 autoreload 11416 7972 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\forms.py changed, reloading.
+INFO 2025-07-25 09:24:41,891 autoreload 18740 12208 Watching for file changes with StatReloader
+ERROR 2025-07-25 09:24:44,811 log 18740 10204 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 826, in register_view
+    form = RegisterForm() # Usa tu RegisterForm personalizado aquí
+           ^^^^^^^^^^^^
+NameError: name 'RegisterForm' is not defined
+ERROR 2025-07-25 09:24:44,824 basehttp 18740 10204 "GET /register/ HTTP/1.1" 500 76343
+INFO 2025-07-25 09:24:44,835 basehttp 18740 28260 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:24:45,787 autoreload 18740 12208 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\forms.py changed, reloading.
+INFO 2025-07-25 09:24:46,921 autoreload 20436 13328 Watching for file changes with StatReloader
+ERROR 2025-07-25 09:24:49,540 log 20436 2232 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 826, in register_view
+    form = RegisterForm() # Usa tu RegisterForm personalizado aquí
+           ^^^^^^^^^^^^
+NameError: name 'RegisterForm' is not defined
+ERROR 2025-07-25 09:24:49,553 basehttp 20436 2232 "GET /register/ HTTP/1.1" 500 76343
+INFO 2025-07-25 09:24:49,563 basehttp 20436 19068 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:25:04,868 autoreload 20436 13328 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py changed, reloading.
+INFO 2025-07-25 09:25:06,691 autoreload 14384 27208 Watching for file changes with StatReloader
+ERROR 2025-07-25 09:25:09,463 log 14384 25720 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 826, in register_view
+    form = RegisterForm() # Usa tu RegisterForm personalizado aquí
+           ^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\forms.py", line 55, in __init__
+    self.fields['password'].label = "Contraseña"
+    ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'password'
+ERROR 2025-07-25 09:25:09,472 basehttp 14384 25720 "GET /register/ HTTP/1.1" 500 81004
+INFO 2025-07-25 09:25:09,482 basehttp 14384 7624 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:27:22,614 autoreload 14384 27208 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\forms.py changed, reloading.
+INFO 2025-07-25 09:27:24,022 autoreload 26976 28068 Watching for file changes with StatReloader
+ERROR 2025-07-25 09:27:27,100 log 26976 20988 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 827, in register_view
+    return render(request, 'registration/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: registration/register.html
+ERROR 2025-07-25 09:27:27,121 basehttp 26976 20988 "GET /register/ HTTP/1.1" 500 93110
+INFO 2025-07-25 09:27:27,130 basehttp 26976 18616 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:27:28,259 autoreload 26976 28068 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\forms.py changed, reloading.
+INFO 2025-07-25 09:27:29,494 autoreload 2420 12508 Watching for file changes with StatReloader
+ERROR 2025-07-25 09:27:32,209 log 2420 24048 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 827, in register_view
+    return render(request, 'registration/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: registration/register.html
+ERROR 2025-07-25 09:27:32,219 basehttp 2420 24048 "GET /register/ HTTP/1.1" 500 93110
+INFO 2025-07-25 09:27:32,230 basehttp 2420 13064 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:28:33,959 autoreload 2420 12508 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py changed, reloading.
+INFO 2025-07-25 09:28:35,090 autoreload 13156 13696 Watching for file changes with StatReloader
+ERROR 2025-07-25 09:28:38,261 log 13156 16976 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py", line 827, in register_view
+    return render(request, 'registration/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\wamp64\www\ProyectosDjango\control_horario\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: registration/register.html
+ERROR 2025-07-25 09:28:38,272 basehttp 13156 16976 "GET /register/ HTTP/1.1" 500 93110
+INFO 2025-07-25 09:28:38,279 basehttp 13156 17168 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:28:39,479 autoreload 13156 13696 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py changed, reloading.
+INFO 2025-07-25 09:28:40,829 autoreload 18124 5952 Watching for file changes with StatReloader
+INFO 2025-07-25 09:28:43,449 basehttp 18124 18148 "GET /register/ HTTP/1.1" 200 11802
+INFO 2025-07-25 09:28:43,459 basehttp 18124 724 "GET /admin/login/?next=/admin/control_horario_app/company/add/ HTTP/1.1" 200 4300
+INFO 2025-07-25 09:28:44,758 autoreload 18124 5952 C:\wamp64\www\ProyectosDjango\control_horario\control_horario_app\views.py changed, reloading.
+INFO 2025-07-25 09:28:46,170 autoreload 12980 24376 Watching for file changes with StatReloader

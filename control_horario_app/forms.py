@@ -1,13 +1,64 @@
 # control_horario_app/forms.py
 
 from django import forms
-from .models import TimeEntry, TimeEntryModificationRequest
+from .models import Company, TimeEntry, TimeEntryModificationRequest
 from django.utils import timezone
 import pytz
 from datetime import datetime # Asegúrate de importar datetime
-from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm # Importar formularios de Django
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm # Importar formularios de Django
 from django.contrib.auth.models import User # Importar el modelo User
 #import datetime
+
+# --- TU FORMULARIO DE REGISTRO CON LA CORRECCIÓN ---
+class RegisterForm(UserCreationForm):
+    email = forms.EmailField(
+        required=True,
+        label="Correo Electrónico",
+        widget=forms.EmailInput(attrs={'class': 'form-control'})
+    )
+    company_code = forms.CharField(
+        max_length=50,
+        required=True,
+        label="Código de Empresa",
+        help_text="Introduce el código proporcionado por tu empresa.",
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = UserCreationForm.Meta.fields + ('email', 'company_code',)
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("Ya existe un usuario con este correo electrónico.")
+        return email
+
+    def clean_company_code(self):
+        code = self.cleaned_data['company_code']
+        if not Company.objects.filter(code=code).exists():
+            raise forms.ValidationError("El código de empresa introducido no es válido.")
+        return code
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        # Primero, aplica la clase CSS 'form-control' a TODOS los campos
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+
+        # Luego, personaliza las etiquetas solo si el campo existe
+        # Esto es más seguro y evita el KeyError
+        if 'username' in self.fields:
+            self.fields['username'].label = "Nombre de Usuario"
+        if 'email' in self.fields:
+            self.fields['email'].label = "Correo Electrónico"
+        if 'company_code' in self.fields:
+            self.fields['company_code'].label = "Código de Empresa"
+        if 'password' in self.fields: # <--- CORRECCIÓN AQUÍ
+            self.fields['password'].label = "Contraseña"
+        if 'password2' in self.fields: # <--- Y AQUÍ
+            self.fields['password2'].label = "Confirmar Contraseña"
 
 # NUEVOS FORMULARIOS PARA GESTIÓN DE PERFIL
 class UserProfileEditForm(UserChangeForm):

@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .models import TimeEntry, TimeEntryModificationRequest, User 
+from .models import Company, TimeEntry, TimeEntryModificationRequest, User, UserProfile 
 from django.utils import timezone
 from django.core.mail import send_mail, BadHeaderError # Importar BadHeaderError
 from django.template.loader import render_to_string
@@ -30,7 +30,7 @@ from weasyprint import HTML, CSS # Importar HTML y CSS de WeasyPrint
 
 from django.conf import settings # Para acceder a STATIC_ROOT si necesitas cargar CSS/Imágenes externas
 import os # Para construir rutas de archivos
-from .forms import TimeEntryEditForm, TimeEntryRequestModificationForm, UserProfileEditForm, PasswordChangingForm # NUEVAS IMPORTACIONES DE FORMULARIOS
+from .forms import RegisterForm, TimeEntryEditForm, TimeEntryRequestModificationForm, UserProfileEditForm, PasswordChangingForm # NUEVAS IMPORTACIONES DE FORMULARIOS
 # Importaciones de Django para la gestión de contraseñas
 from django.contrib.auth import update_session_auth_hash # Necesario para mantener al usuario logeado después de cambiar contraseña
 from django.contrib.auth.hashers import make_password # Añadir si decides permitir cambiar la contraseña desde el formulario de perfil (no recomendado)
@@ -795,6 +795,39 @@ def login_view(request):
     return render(request, 'control_horario_app/login.html')
 
 def register_view(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST) # Usa tu RegisterForm personalizado aquí
+        if form.is_valid():
+            company_code = form.cleaned_data.get('company_code') # Obtener el código de la empresa del formulario
+
+            try:
+                # Intentar encontrar la empresa por el código
+                company = Company.objects.get(code=company_code)
+            except Company.DoesNotExist:
+                # Si el código no existe, añadir un error al formulario
+                form.add_error('company_code', 'El código de empresa introducido no es válido.')
+                return render(request, 'control_horario_app/register.html', {'form': form})
+
+            # Guardar el usuario: form.save() creará el objeto User
+            user = form.save(commit=False) # Guarda el usuario pero no lo persiste aún en la DB
+            # El email ya debería estar manejado por RegisterForm si es que lo agregaste a fields
+            user.save() # Ahora guarda el usuario en la base de datos
+
+            # Crear el UserProfile para el nuevo usuario y asociar la empresa
+            UserProfile.objects.create(user=user, company=company)
+
+            messages.success(request, "¡Registro exitoso! Ahora puedes iniciar sesión.")
+            return redirect('login')
+        else:
+            # Si el formulario no es válido, los errores se mostrarán automáticamente en la plantilla.
+            # No se necesita código adicional aquí.
+            pass
+    else:
+        form = RegisterForm() # Usa tu RegisterForm personalizado aquí
+    return render(request, 'control_horario_app/register.html', {'form': form})
+
+
+def register_view_old(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():

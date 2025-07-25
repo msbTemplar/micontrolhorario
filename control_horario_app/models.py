@@ -1,6 +1,48 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from datetime import datetime, timedelta
+import pytz
+
+# Nuevo modelo para la Empresa
+class Company(models.Model):
+    name = models.CharField(max_length=255, unique=True, verbose_name="Nombre de la Empresa")
+    code = models.CharField(max_length=50, unique=True, verbose_name="Código de la Empresa")
+    # Puedes añadir más campos aquí si lo necesitas, por ejemplo:
+    address = models.CharField(max_length=255, blank=True, null=True, verbose_name="Dirección")
+    phone = models.CharField(max_length=20, blank=True, null=True, verbose_name="Teléfono")
+    email = models.EmailField(blank=True, null=True, verbose_name="Email de Contacto")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Empresa"
+        verbose_name_plural = "Empresas"
+
+    def __str__(self):
+        return self.name + f" ({self.code})"
+
+# Modificar el modelo User para incluir la relación con Company
+# Opción 1: Si no has extendido el User de Django, añade un OneToOneField a un Profile
+# (Esta es la opción recomendada para no modificar el User directamente)
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    company = models.ForeignKey(
+        Company,
+        on_delete=models.SET_NULL, # Si la empresa se elimina, los usuarios de esa empresa tendrían 'company' a null
+        null=True,
+        blank=True, # Puede ser null, por ejemplo, hasta que se asigne una empresa
+        verbose_name="Empresa Asociada"
+    )
+    # Puedes añadir otros campos de perfil aquí si los necesitas
+    # ejemplo_campo = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Perfil de Usuario"
+        verbose_name_plural = "Perfiles de Usuario"
+
+    def __str__(self):
+        return f"Perfil de {self.user.username}"
 
 class TimeEntry(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

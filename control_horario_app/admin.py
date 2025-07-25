@@ -1,10 +1,39 @@
 from django.contrib import admin
-from .models import TimeEntry, TimeEntryModificationRequest # ¡Importa ambos!
+from .models import TimeEntry, TimeEntryModificationRequest, Company, UserProfile # Importa Company y UserProfile
 from django.utils import timezone
 from django.core.mail import EmailMultiAlternatives # <- Aquí se importa
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import User
+
+# Opcional: Para mostrar Company y UserProfile en el admin
+@admin.register(Company)
+class CompanyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'code','address','phone','email', 'created_at')
+    search_fields = ('name', 'code')
+    list_filter = ('created_at',)
+
+# Para integrar UserProfile en la administración de usuarios de Django
+class UserProfileInline(admin.StackedInline): # O admin.TabularInline si prefieres una vista de tabla
+    model = UserProfile
+    can_delete = False
+    verbose_name_plural = 'Perfil de Usuario'
+
+class UserAdmin(BaseUserAdmin):
+    inlines = (UserProfileInline,)
+    list_display = BaseUserAdmin.list_display + ('get_company_name',) # Añade la empresa a la lista de usuarios
+
+    def get_company_name(self, obj):
+        return obj.profile.company.name if hasattr(obj, 'profile') and obj.profile.company else '-'
+    get_company_name.short_description = 'Empresa'
+
+# Re-registra el modelo User para usar tu UserAdmin personalizado
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
+
+
 
 # Registra tu modelo TimeEntry
 @admin.register(TimeEntry)
