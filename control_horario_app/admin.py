@@ -28,6 +28,16 @@ class UserAdmin(BaseUserAdmin):
     def get_company_name(self, obj):
         return obj.profile.company.name if hasattr(obj, 'profile') and obj.profile.company else '-'
     get_company_name.short_description = 'Empresa'
+    
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+
+        # Si es superuser, ve todo
+        if request.user.is_superuser:
+            return qs
+
+        # Si es staff pero no superuser: ocultar usuarios superusuarios
+        return qs.exclude(is_superuser=True)
 
 # Re-registra el modelo User para usar tu UserAdmin personalizado
 admin.site.unregister(User)
